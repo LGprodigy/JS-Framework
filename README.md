@@ -1,4 +1,6 @@
 [![Build Status: Linux](https://travis-ci.org/ZippCast/JS-Framework.svg?branch=master)](https://travis-ci.org/ZippCast/JS-Framework) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/o6h1hhr4ifog9dvk?svg=true)](https://ci.appveyor.com/project/LGprodigy/js-framework/branch/master)
+======
+![Picture](https://zcstatic.global.ssl.fastly.net/img/logo-sm-transparent.png)
 
 **ZCJ Library** is a mini javascript library that gets the job done. This library will allow you to extend the native DOM and OBJECT oriented functions.
 
