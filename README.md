@@ -4,6 +4,11 @@
 
 Much of this project was aimed to create an extensive library similar to Jquery or Mootools with a much much smaller footprint. This library supports all major modern browsers and IE9+. It uses native JS api without any large intrusive methods for selectors. It is very easy to read and decipher exactly what is happening under the hood.
 
+#### View Build Logs/Status
+[Linux Build](https://travis-ci.org/ZippCast/JS-Framework)
+[Windows Build](https://ci.appveyor.com/project/LGprodigy/js-framework/branch/master)
+
+
 #### How To Extend DOM.prototype
 ```javascript
 ZCJ.mage.extend({});
