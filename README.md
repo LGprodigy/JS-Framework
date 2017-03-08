@@ -49,7 +49,9 @@ ZCJ.something(config_or_whatever);
 
 ### You can build your own
 
-Enter the project directory and install the dependencies:
+You will need [NodeJS](https://nodejs.org/en/) installed.
+
+With your command line of choice, enter the project directory, and install the dependencies:
 
 `npm install`
 
