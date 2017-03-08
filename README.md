@@ -6,6 +6,7 @@ Much of this project was aimed to create an extensive library similar to Jquery 
 
 #### View Build Logs/Status
 [Linux Build](https://travis-ci.org/ZippCast/JS-Framework)
+
 [Windows Build](https://ci.appveyor.com/project/LGprodigy/js-framework/branch/master)
 
 
