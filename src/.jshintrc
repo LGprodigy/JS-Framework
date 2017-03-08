@@ -1,0 +1,10 @@
+{
+	"undef": true,
+	"unused": true,
+	"node": true,
+	"globals": {
+		"window": true,
+		"ZCJ": true
+	}
+
+}

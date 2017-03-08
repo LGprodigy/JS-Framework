@@ -1,0 +1,113 @@
+ZCJ.magic({
+    xmlhttp: function() {
+        if (window.XMLHttpRequest) {
+            //code for IE7,firefox chrome and above
+            return new XMLHttpRequest();
+        } else {
+            //code for Internet Explorer
+            return new ActiveXObject("Microsoft.XMLHTTP");
+        }
+    },
+    Ajax: function(config) {
+		var datum, i, j;
+        /*Config Structure
+                url:"reqesting URL"
+                type:"GET or POST"
+                method: "(OPTIONAL) True for async and False for Non-async | By default its Async"
+                debugLog: "(OPTIONAL)To display Debug Logs | By default it is false"
+                data: "(OPTIONAL) another Nested Object which should contains reqested Properties in form of Object Properties"
+                success: "(OPTIONAL) Callback function to process after response | function(data,status)"
+        */
+        if (!config.url) {
+            if (config.debugLog === true)
+                console.log("No Url!");
+            return;
+        }
+
+        if (!config.type) {
+            if (config.debugLog === true)
+                console.log("No Default type (GET/POST) given!");
+            return;
+        }
+
+        if (!config.method) {
+            config.method = true;
+        }
+
+
+        if (!config.debugLog) {
+            config.debugLog = false;
+        }
+
+        var xmlhttp = this.xmlhttp();
+        
+
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var response = xmlhttp.responseText,
+                    ContentType = config.contentType;
+                if (ContentType == 'json') {
+                    if(response) {
+                        response = JSON.parse(response);
+                    } else response = '';
+                }
+                    
+                if (config.success) {
+                    config.success(response, xmlhttp.readyState);
+                }
+
+                if (config.debugLog === true)
+                    console.log("SuccessResponse");
+                if (config.debugLog === true)
+                    console.log("Response Data:" + xmlhttp.responseText);
+            } else {
+                if (config.debugLog === true)
+                    console.log("FailureResponse --> State:" + xmlhttp.readyState + "Status:" + xmlhttp.status);
+            }
+        };
+
+        var sendString = [],
+            sendData = config.data;
+        if( typeof sendData === "string" ){
+            var tmpArr = String.prototype.split.call(sendData,'&');
+            for(i = 0, j = tmpArr.length; i < j; i++){
+                datum = tmpArr[i].split('=');
+                sendString.push(encodeURIComponent(datum[0]) + "=" + encodeURIComponent(datum[1]));
+            }
+        }else if( typeof sendData === 'object' && !( sendData instanceof String || (FormData && sendData instanceof FormData) ) ){
+            for (var k in sendData) {
+				datum = sendData[k];
+                if( Object.prototype.toString.call(datum) == "[object Array]" ){
+                    for(i = 0, j = datum.length; i < j; i++) {
+                            sendString.push(encodeURIComponent(k) + "[]=" + encodeURIComponent(datum[i]));
+                    }
+                }else{
+                    sendString.push(encodeURIComponent(k) + "=" + encodeURIComponent(datum));
+                }
+            }
+        }
+        sendString = sendString.join('&');
+        
+
+        if (config.type == "GET") {
+            xmlhttp.open("GET", config.url + "?" + sendString, config.method);
+            xmlhttp.send();
+
+            if (config.debugLog === true)
+                console.log("GET fired at:" + config.url + "?" + sendString);
+                
+        }else if (config.type == "POST") {
+            xmlhttp.open("POST", config.url, config.method);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send(sendString);
+
+            if (config.debugLog === true)
+                console.log("POST fired at:" + config.url + " || Data:" + sendString);
+                
+        }else if (config.type == "UPLOAD") {
+            xmlhttp.open("POST", config.url, config.method);
+            xmlhttp.send(config.data);
+            
+        } else return false;
+    }
+});

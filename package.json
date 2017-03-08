@@ -1,0 +1,41 @@
+{
+  "name": "ZCJ",
+  "title": "ZCJ(ZippCast JavaScript) Library",
+  "description": "A Javascript library inspired by jquery and mootools. Adavanced DOM selectors with optimized modifiers.",
+  "version": "0.0.1",
+  "copyright": "ZippCast",
+  "main": "dist/ZCJ-Framework.js",
+  "mini": "dist/ZCJ-Framework.min.js",
+  "homepage": "https://www.zippcast.com",
+  "author": {
+    "name": "Louis Gualtieri",
+    "url": "https://github.com/ZippCast/JS-Framework/blob/master/LICENSE"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZippCast/JS-Framework.git"
+  },
+  "keywords": [
+    "ZippCast",
+    "javascript",
+    "browser",
+    "library"
+  ],
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "grunt": "1.0.1",
+    "grunt-cli": "1.2.0",
+    "grunt-compare-size": "0.4.2",
+    "grunt-contrib-jshint": "1.1.0",
+    "grunt-contrib-uglify": "2.2.0",
+    "grunt-contrib-watch": "1.0.0",
+    "grunt-contrib-qunit": "1.3.0",
+    "grunt-contrib-concat": "1.0.1",
+    "load-grunt-tasks": "3.5.2",
+    "gzip-js": "0.3.2"
+  },
+  "scripts": {
+    "test": "grunt test",
+    "build": "grunt"
+  }
+}
