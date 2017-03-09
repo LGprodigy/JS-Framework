@@ -9,17 +9,21 @@ var init = ZCJ.mage.init = function( selector, context ) {
     // Handle HTML strings
     if ( typeof selector === "string" ) {
         if ( selector.charAt(0) === "<" && selector.charAt( selector.length - 1 ) === ">" && selector.length >= 3 ) {
+
             // Assume that strings that start and end with <> are HTML and skip the regex check
+            //Use an array for the sake of a possible regex lookup.
             match = [ null, selector, null ];
 
         } else {
+
             match = expr.exec( selector );
+            console.log(match);
         }
 
         // Match html
-        if ( match && (match[0]) ) {
+        if ( match && (match[1]) ) {
             context = context instanceof ZCJ ? context[0] : context;
-            ZCJ.merge( this, ZCJ.parseHTML(
+            ZCJ.unite( this, ZCJ.parseHTML(
                 match[1],
                 context && context.nodeType ? context.ownerDocument || context : document,
                 true
