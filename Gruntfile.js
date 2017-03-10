@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 
     uglify: {
       options: {
-        banner: '/*! <%= pkg.title %> By: <%= pkg.author.name %> ' +
+        banner: '/*! <%= pkg.title %> v<%= pkg.version %>, By: <%= pkg.author.name %> ' +
                 '(c) <%= pkg.copyright %> <%= grunt.template.today("yyyy") %> | https://raw.githubusercontent.com/ZippCast/JS-Framework/master/LICENSE */\n'
       },
       dist: {

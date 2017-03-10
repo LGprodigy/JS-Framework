@@ -2,7 +2,7 @@
   "name": "ZCJ",
   "title": "ZCJ(ZippCast JavaScript) Library",
   "description": "A Javascript library inspired by jquery and mootools. Adavanced DOM selectors with optimized modifiers.",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "copyright": "ZippCast",
   "main": "dist/ZCJ-Framework.js",
   "mini": "dist/ZCJ-Framework.min.js",
