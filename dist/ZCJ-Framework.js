@@ -254,7 +254,6 @@ var init = ZCJ.mage.init = function( selector, context ) {
         } else {
 
             match = expr.exec( selector );
-            console.log(match);
         }
 
         // Match html
