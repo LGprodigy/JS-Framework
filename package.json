@@ -4,8 +4,8 @@
   "description": "A Javascript library inspired by jquery and mootools. Adavanced DOM selectors with optimized modifiers.",
   "version": "1.0.1",
   "copyright": "ZippCast",
-  "main": "dist/ZCJ-Framework.js",
-  "mini": "dist/ZCJ-Framework.min.js",
+  "main": "dist/ZCJ.js",
+  "mini": "dist/ZCJ.min.js",
   "homepage": "https://www.zippcast.com",
   "author": {
     "name": "Louis Gualtieri",
