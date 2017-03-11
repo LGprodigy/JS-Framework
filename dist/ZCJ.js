@@ -1,5 +1,23 @@
-window.ZCJ = (function () {
+( function( global, factory ) {
 
+    if ( typeof module === "object" && typeof module.exports === "object" ) {
+
+        //In Node.js expose factory as model.exports
+        //https://nodejs.org/api/globals.html
+        module.exports = global.document ?
+            factory( global, true ) :
+            function( w ) {
+                if ( !w.document ) {
+                    throw new Error( "No document found in current window" );
+                }
+                return factory( w );
+            };
+    } else {
+        factory( global );
+    }
+
+// Pass window/this to ZCJ
+} )( typeof window !== "undefined" ? window : this, function( window, globalNotAllowed ) {
 var author = "Louis Gualtieri",
 	version = "1.0.1",
 	now = new Date(),
@@ -445,10 +463,46 @@ ZCJ.mage.off = function(evt, fn) {
 		this.removeEventListener(evt, fn, false);
 	});
 };
-ZCJ.mage.on = function(evt, fn) {
-	return this.forEach( function() {
-		this.addEventListener(evt, fn, false);
-	});
+//Support multiple events in one "on" function
+function on( elem, evnts, input, fn ) {
+	var evnt;
+
+	// Check if the evnts is an object
+	if ( typeof evnts === "object" ) {
+
+		for ( evnt in evnts ) {
+			//Execurte each object event as a non object
+			on( elem, evnt, input, evnts[ evnt ] );
+		}
+		return elem;
+	}
+
+	//on(div, click, function)
+	if ( fn === null ) {
+  
+		// If no function is specified then input is the function
+		fn = input;
+		input = undefined;
+
+	}
+
+	//Handle a flase statement
+	if ( fn === false ) {
+		return false;
+	} else if ( !fn ) {
+		return elem;
+	}
+
+	//Add event listeners
+	return elem.forEach( function() {
+		this.addEventListener(evnts, fn, input);
+	} );
+}
+
+ZCJ.mage.on = function(evnt, input, fn) {
+	//Send to the on handler
+	return on( this, evnt, input, fn );
+
 };
 ZCJ.mage.prepend = function(elem) {
 	return this.forEach(function () {
@@ -635,10 +689,17 @@ ZCJ.magic({
         return tmp.body.children;
     }
 });
-console.log("%cZippCast Console Debugger", "color:blue; font-weight: bold; font-size: x-large");
-console.log("%cThis is nerd stuff. If you dont know what your doing, then you probably shouldnt be here.", "color:blue; font-size: medium");
-console.log("%cIf something led you here in error, please contact support ASAP!", "color:blue; font-size: medium");
+	//Work on bridging jquery pluigns into ZCJ
+	//Allow "ZCJ" and "$" to be used in AMD, window and Node
+	//Make sure globals are allowed
+	if ( !globalNotAllowed ) {
+		window.ZCJ = window.$ = ZCJ;
+	}
 
-return ZCJ;
+	//Console message
+	console.log("%cZCJ (ZippCast Javascript Framework) Console Debugger", "color:blue; font-weight: bold; font-size: x-large");
+	console.log("%cThis is nerd stuff. If you dont know what your doing, then you probably shouldnt be here.", "color:blue; font-size: medium");
 
-}());
+	return ZCJ;
+
+} );
