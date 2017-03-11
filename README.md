@@ -17,6 +17,13 @@ Much of this project was aimed to create an extensive library similar to Jquery 
 
 [Windows Build](https://ci.appveyor.com/project/LGprodigy/js-framework/branch/master)
 
+# How to use
+Download a [release](https://github.com/ZippCast/JS-Framework/releases) and include it in your HTML just before the </body> tag.
+
+```html
+<script src="URL/Directory/ZCJ.min.js" type="text/javascript"></script>
+```
+
 
 #### How To Extend DOM.prototype
 ```javascript
