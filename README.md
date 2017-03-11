@@ -1,4 +1,5 @@
 # ZippCast JS-Framework
+[![NPM version](https://img.shields.io/npm/v/zcj.svg)](https://www.npmjs.com/package/zcj)
 [![Build Status: Linux](https://travis-ci.org/ZippCast/JS-Framework.svg?branch=master)](https://travis-ci.org/ZippCast/JS-Framework) 
 [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/o6h1hhr4ifog9dvk?svg=true)](https://ci.appveyor.com/project/LGprodigy/js-framework/branch/master)
 [![devDependency Status](https://david-dm.org/ZippCast/JS-Framework/dev-status.svg)](https://david-dm.org/ZippCast/JS-Framework#info=devDependencies)
@@ -62,21 +63,29 @@ ZCJ.something(config_or_whatever);
 ```
 
 
-### You can build your own
+# Build your own version
+You will need the latest version of Node.js/NPM and Git.
 
-You will need [NodeJS](https://nodejs.org/en/) installed.
+On Windows, you will need to download and install [NodeJS](https://nodejs.org/en/) and [Git](https://git-scm.com/downloads).
+On OSX you will need to install [Homebrew](http://brew.sh/) first. Then run `brew install git` for Git, and run `brew install node` for Node.js.
+In Linux/BSD you can simply use your perspective package managers to install Git and Node.js, or build from source if thats what you prefer.
 
-With your command line of choice, enter the project directory, and install the dependencies:
+First you will need to use Git and clone the repo
+```bash
+git clone git://github.com/ZippCast/JS-Framework.git
+```
 
-`npm install`
+Enter the cloned repo and install required devDependencies
+```bash
+cd JS-Framework && npm install
+```
 
-Build your own version:
+Now you're ready to build your own working version. Just run grunt and it will work its magic.
+```bash
+grunt
+```
 
-`grunt`
-
-Check the results in `dist/` folder.
-
-
+You can then check the results in `dist/` folder.
 
 
 The Apache 2.0 License (Apache-2.0)
