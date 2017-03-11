@@ -20,7 +20,7 @@ module.exports = function(grunt) {
           'src/magic/*.js',
           'src/end.js'
           ],
-        dest: 'dist/ZCJ-Framework.js'
+        dest: 'dist/ZCJ.js'
       }
     },
 
@@ -44,13 +44,13 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'dist/ZCJ-Framework.min.js': ['<%= concat.dist.dest %>']
+          'dist/ZCJ.min.js': ['<%= concat.dist.dest %>']
         }
       }
     },
 
     compare_size: {
-      files: [ "<%= concat.dist.dest %>", "dist/zc_js-UIX.min.js" ],
+      files: [ "<%= concat.dist.dest %>", "dist/ZCJ.min.js" ],
       options: {
         compress: {
           gz: function( contents ) {
