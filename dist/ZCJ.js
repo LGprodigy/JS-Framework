@@ -19,7 +19,7 @@
 // Pass window/this to ZCJ
 } )( typeof window !== "undefined" ? window : this, function( window, globalNotAllowed ) {
 var author = "Louis Gualtieri",
-	version = "1.0.1",
+	version = "1.0.3",
 	now = new Date(),
 	year = now.getFullYear(),
 	class_to_type = {},
@@ -354,6 +354,11 @@ ZCJ.mage.extend({
 
 			this.className = cs.join(' ');
 		});
+	},
+
+	swapClass: function(oldClass, newClass) {
+		this.removeClass(oldClass);
+		this.addClass(newClass);
 	},
 
 	toggleClass: function(className) {
