@@ -13,7 +13,7 @@ function on( elem, evnts, input, fn ) {
 	}
 
 	//on(div, click, function)
-	if ( fn === null ) {
+	if ( fn === undefined ) {
   
 		// If no function is specified then input is the function
 		fn = input;
