@@ -36,6 +36,11 @@ ZCJ.mage.extend({
 		});
 	},
 
+	swapClass: function(oldClass, newClass) {
+		this.removeClass(oldClass);
+		this.addClass(newClass);
+	},
+
 	toggleClass: function(className) {
 		return this.forEach( function() {
 			if (this.classList) {
